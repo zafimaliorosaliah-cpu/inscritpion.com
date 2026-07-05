@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculatrice</title>
+    <style>
+        body{
+            display: inline ;
+        }
+    </style>
+</head>
+<body>
+    <form name="f">
+        <input type="text" name="n2" placeholder="entrer les nombres à calculer">
+        <button onclick="result()">=</button>
+        <input type="text" name="n3" placeholder="voici les resultat">
+        <a href="#"onclick="result()" >voir</a>
+
+    </form>
+    <script>
+        function result(){
+            let c= document.f.n2.value;
+            let b=eval(c);
+            document.f.n3.value=b;
+        }
+    </script>
+    
+</body>
+</html>
