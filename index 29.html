@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formation</title>
+    <style>
+        body{
+            background-color: pink;
+            font-style:italic;
+            line-height: 1.5;
+            margin: 25px;
+        }
+        h1{
+            text-align: center;   
+        }
+        .form{
+            margin: 25px;
+            margin-bottom:10px ;
+
+        }
+        p{
+            text-align: right;
+        }
+        .div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>INSCRIPTION</h1>
+    <form name="f" action="sauvegarder.html " method="post"onsubmit="return verif()">
+        <div class="form">
+        <label for="nom">Nom et prénom*:</label>
+        <input type="text" id="nom" name="nom" required><br>
+        <label for="CIN">CIN*:</label>
+        <input type="text" id="CIN" name="CIN" required><br>
+        <label for="email">Email*:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="niveau">Niveau *:</label>
+        <input type="radio" id="niveau" name="niveau" value="niveau1"> secondaire
+        <input type="radio" id="niveau" name="niveau" value="niveau2"> universitaire
+        <input type="radio" id="niveau" name="niveau" value="niveau3"> autre<br>
+        <label for="modules">Modules de formation*:</label>
+        <select id="modules" name="modules" required>
+            <option value="">--Sélectionnez un module--</option>
+            <option value="module1">bureautique</option>
+            <option value="module2">SE reseau informatique</option>
+            <option value="module3">TIC</option> 
+        </select>
+        </div>
+        <p>(*) Champs obligatoires</p>
+        <div class="div">
+        <input type="submit"value="envoyer">
+        <input type="reset" value="annuler">
+        </div>
+    </form> 
+    <script>
+        function verif() {
+            var nom = document.getElementById("nom").value;
+            var CIN = document.getElementById("CIN").value;
+            var email = document.getElementById("email").value;
+            var niveau = document.querySelector('input[name="niveau"]:checked');
+            var modules = document.getElementById("modules").value;
+
+            if (nom === "" || CIN === "" || email === "" || !niveau || modules === "") {
+                alert("Veuillez remplir tous les champs obligatoires.");
+                return false;
+            }
+            return true;
+            if(email.indexOf("@") === -1 || email.indexOf(".") === -1) {
+                alert("Veuillez entrer une adresse e-mail valide.");
+                return false;
+        }   
+        var taille=document.getElementById("modules").value;
+        var n=0;
+        for(var i=0;i<taille.length;i++){
+                if(taille[i]==="a" || taille[i]==="e" || taille[i]==="i" || taille[i]==="o" || taille[i]==="u"){
+                    n++;
+                }
+            }
+            if(n<3){
+                alert("Le module doit contenir au moins 3 voyelles.");
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+</body>
+</html>
